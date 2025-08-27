@@ -26,11 +26,11 @@ services:
       - key: EMAIL_USE_SSL
         value: "False"
       - key: EMAIL_HOST_USER
-        value: "wasimranjha@angularquantum.com"
+        value: "hsyed2502@gmail.com"
       - key: EMAIL_HOST_PASSWORD
-        value: "prli ddvv xnww bewd"
+        value: "pakistan111"
       - key: DEFAULT_FROM_EMAIL
-        value: "wasimranjha@angularquantum.com"
+        value: "hsyed2502@gmail.com"
     buildFilter:
       paths:
         - backend/**
@@ -42,7 +42,7 @@ services:
     startCommand: cd frontend && npm run preview
     envVars:
       - key: VITE_API_URL
-        value: "https://real-estate-api-ejqg.onrender.com/api"
+        value: "http://127.0.0.1:8000/api"
     buildFilter:
       paths:
         - frontend/**
