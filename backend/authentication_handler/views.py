@@ -371,6 +371,7 @@ def profile(request):
 @api_view(['POST'])
 def perplexity_proxy(request):
     api_key = os.getenv('PERPLEXITY_API_KEY')
+    print("=======>>>>> PERPLEXITY_API_KEY in view ========<<<<<<<<", api_key)
     if not api_key:
         return Response({'error': 'API key not configured.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
@@ -1200,8 +1201,8 @@ def test_email(request):
     """Test email functionality (remove in production)"""
     try:
         from .email_utils import send_welcome_email
-        
-        test_email = request.data.get('email', 'wasimranjha@angularquantum.com')
+
+        test_email = request.data.get('email', 'hsyed2502@gmail.com')
         test_name = request.data.get('name', 'Test User')
         
         email_sent = send_welcome_email(test_email, test_name)

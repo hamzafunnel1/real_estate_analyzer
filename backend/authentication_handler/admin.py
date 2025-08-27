@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from .models import AgentProfile
+from .models import AgentProfile, PropertyAnalysis, PropertyAnalysisShare, SharedAnalysisView
 
 class AgentProfileInline(admin.StackedInline):
     """Inline admin for AgentProfile to show with User"""
@@ -115,3 +115,21 @@ class AgentProfileAdmin(admin.ModelAdmin):
 # Unregister the default User admin and register our custom one
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+
+@admin.register(PropertyAnalysis)
+class PropertyAnalysisAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'address', 'created_at', 'updated_at')  # apne fields ke hisaab se change kar lena
+    search_fields = ('id',)
+    list_filter = ('created_at',)
+
+@admin.register(PropertyAnalysisShare)
+class PropertyAnalysisShareAdmin(admin.ModelAdmin):
+    list_display = ('id', 'shared_by', 'shared_by_name', 'first_shared_at', 'last_shared_at')  # fields apne model ke according
+    search_fields = ('id',)
+    list_filter = ('first_shared_at',)
+
+@admin.register(SharedAnalysisView)
+class SharedAnalysisViewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'share', 'viewed_at', 'ip_address')  # fields apne model ke according
+    search_fields = ('id',)
+    list_filter = ('viewed_at',)

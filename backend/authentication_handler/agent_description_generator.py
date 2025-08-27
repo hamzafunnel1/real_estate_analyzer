@@ -10,6 +10,7 @@ class AgentDescriptionGenerator:
     
     def __init__(self):
         self.api_key = os.getenv('PERPLEXITY_API_KEY')
+        print("=======>>>>> PERPLEXITY_API_KEY ========<<<<<<<<", self.api_key)
         if not self.api_key:
             raise ValueError("PERPLEXITY_API_KEY environment variable is required")
         
