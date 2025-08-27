@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: real-estate-api
+    env: python
+    buildCommand: cd backend && chmod +x build.sh && ./build.sh
+    startCommand: cd backend && chmod +x start.sh && ./start.sh
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgresql
+          property: connectionString
+      - key: FRONTEND_URL
+        value: "https://real-estate-platform-wj7s.onrender.com"
+      - key: PERPLEXITY_API_KEY
+        value: "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"
+      - key: EMAIL_HOST
+        value: "smtp.gmail.com"
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: EMAIL_USE_SSL
+        value: "False"
+      - key: EMAIL_HOST_USER
+        value: "wasimranjha@angularquantum.com"
+      - key: EMAIL_HOST_PASSWORD
+        value: "prli ddvv xnww bewd"
+      - key: DEFAULT_FROM_EMAIL
+        value: "wasimranjha@angularquantum.com"
+    buildFilter:
+      paths:
+        - backend/**
+    
+  - type: web
+    name: real-estate-platform
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run preview
+    envVars:
+      - key: VITE_API_URL
+        value: "https://real-estate-api-ejqg.onrender.com/api"
+    buildFilter:
+      paths:
+        - frontend/**
+
+databases:
+  - name: postgresql
+    plan: free
+    databaseName: real_estate_db

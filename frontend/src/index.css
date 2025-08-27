@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (default) */
+    --bg-primary: theme('colors.black');
+    --bg-secondary: theme('colors.gray.950');
+    --bg-tertiary: theme('colors.gray.900');
+    --text-primary: theme('colors.white');
+    --text-secondary: theme('colors.gray.300');
+    --text-muted: theme('colors.gray.400');
+    --border-primary: theme('colors.gray.800');
+    --border-secondary: theme('colors.gray.600');
+  }
+
+  [data-theme="light"] {
+    /* Light theme */
+    --bg-primary: theme('colors.white');
+    --bg-secondary: theme('colors.gray.50');
+    --bg-tertiary: theme('colors.gray.100');
+    --text-primary: theme('colors.gray.900');
+    --text-secondary: theme('colors.gray.700');
+    --text-muted: theme('colors.gray.500');
+    --border-primary: theme('colors.gray.200');
+    --border-secondary: theme('colors.gray.300');
+  }
+
+  body {
+    @apply font-sans transition-colors duration-300;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight;
+    color: var(--text-primary);
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+}
+
+@layer components {
+  .theme-bg-primary {
+    background-color: var(--bg-primary);
+  }
+  
+  .theme-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+  
+  .theme-bg-tertiary {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .theme-text-primary {
+    color: var(--text-primary);
+  }
+  
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .theme-text-muted {
+    color: var(--text-muted);
+  }
+  
+  .theme-border-primary {
+    border-color: var(--border-primary);
+  }
+  
+  .theme-border-secondary {
+    border-color: var(--border-secondary);
+  }
+
+  .btn-primary {
+    @apply text-white px-8 py-4 font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    background: linear-gradient(90deg, #0066CC 0%, #00C4FF 100%);
+    border-radius: 10px;
+    /* Fallback for older browsers */
+    background-color: #0066CC;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(90deg, #0052A3 0%, #00A3D6 100%);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 font-semibold transition-all duration-300;
+    background-color: var(--bg-tertiary);
+    border: 2px solid #0066CC;
+    color: #0066CC;
+    border-radius: 10px;
+    /* Fallback for older browsers */
+    background-color: transparent;
+  }
+  
+  .btn-secondary:hover {
+    background: linear-gradient(90deg, #0066CC 0%, #00C4FF 100%);
+    border-color: transparent;
+    color: #FFFFFF;
+  }
+  
+  .btn-accent {
+    @apply text-white px-8 py-4 font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    background: linear-gradient(90deg, #00C4FF 0%, #0066CC 100%);
+    border-radius: 10px;
+    /* Fallback for older browsers */
+    background-color: #00C4FF;
+  }
+  
+  .btn-accent:hover {
+    background: linear-gradient(90deg, #00A3D6 0%, #0052A3 100%);
+  }
+  
+  .input-field {
+    @apply w-full px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:border-blue-500 transition-all duration-200 text-lg;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    color: var(--text-primary);
+    /* Updated focus ring to match new gradient theme */
+    --tw-ring-color: #0066CC;
+  }
+  
+  .input-field:focus {
+    border-color: #0066CC;
+    --tw-ring-color: #0066CC;
+  }
+  
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:border-blue-500 transition-all duration-200;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    color: var(--text-primary);
+    /* Updated focus ring to match new gradient theme */
+    --tw-ring-color: #0066CC;
+  }
+  
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+  
+  .form-input:focus {
+    border-color: #0066CC;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    --tw-ring-color: #0066CC;
+  }
+
+  .card {
+    @apply rounded-2xl shadow-2xl p-8;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+  }
+  
+  .card-feature {
+    @apply rounded-2xl shadow-2xl p-8 hover:border-gray-700 transition-all duration-300 transform hover:-translate-y-2;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--border-primary);
+  }
+  
+  .section-hero {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+  
+  .text-accent {
+    @apply text-cyan-400 font-bold;
+  }
+  
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+  }
+  
+  .theme-toggle {
+    @apply p-3 rounded-xl transition-all duration-200 relative overflow-hidden;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-secondary);
+    color: var(--text-primary);
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    transform: scale(1.05);
+  }
+}
+
+@layer utilities {
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  
+  .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  [data-theme="light"] .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+  }
+}
