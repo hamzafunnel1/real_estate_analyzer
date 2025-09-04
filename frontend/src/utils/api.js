@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://35.190.186.114/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://reale.duckdns.org/api';
 
 // Mock API responses for development (used after authentication)
 const MOCK_RESPONSES = {
