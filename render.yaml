@@ -42,7 +42,7 @@ services:
     startCommand: cd frontend && npm run preview
     envVars:
       - key: VITE_API_URL
-        value: "http://127.0.0.1:8000/api"
+        value: "http://35.190.186.114/api"
     buildFilter:
       paths:
         - frontend/**
